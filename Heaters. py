@@ -1,0 +1,21 @@
+class Solution:
+    def findRadius(self, houses, heaters):
+        houses.sort()
+        heaters.sort()
+
+        j = 0
+        answer = 0
+
+        for house in houses:
+
+            while j < len(heaters) - 1:
+                if abs(heaters[j + 1] - house) <= abs(heaters[j] - house):
+                    j += 1
+                else:
+                    break
+
+            distance = abs(heaters[j] - house)
+
+            answer = max(answer, distance)
+
+        return answer
